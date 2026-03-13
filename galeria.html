@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería | Yerba Inc.</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green-dark: #1a2e1a; --green-mid: #2d4a2d; --green-light: #4a7c4a;
+      --cream: #f5f0e8; --gold: #c9a84c; --text: #2c2c2c; --text-light: #6b6b6b;
+    }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; }
+    nav { background: var(--green-dark); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--cream); letter-spacing: 2px; text-transform: uppercase; }
+    .logo span { color: var(--gold); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { color: var(--cream); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+    nav a:hover { color: var(--gold); }
+    .page-hero { background: linear-gradient(rgba(26,46,26,0.8), rgba(26,46,26,0.85)), url('https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=1400&q=80') center/cover no-repeat; color: var(--cream); text-align: center; padding: 6rem 2rem; }
+    .page-hero h1 { font-size: 3rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .page-hero h1 span { color: var(--gold); }
+    .page-hero p { color: rgba(245,240,232,0.7); letter-spacing: 2px; text-transform: uppercase; }
+    .gallery-grid { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .gallery-grid img { width: 100%; height: 280px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+    .gallery-grid img:hover { transform: scale(1.04); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
+    footer { background: #111; color: rgba(245,240,232,0.4); text-align: center; padding: 2rem; font-size: 0.8rem; letter-spacing: 1px; }
+    @media (max-width: 768px) { nav ul { display: none; } .gallery-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" style="text-decoration:none;"><div class="logo">Yerba <span>Inc.</span></div></a>
+    <ul>
+      <li><a href="index.html#products">Shop</a></li>
+      <li><a href="historia.html">Historia</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="promociones.html">Promociones</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <h1>Nuestra <span>Galería</span></h1>
+    <p>Conoce nuestro local y nuestros productos</p>
+  </div>
+
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1527015175922-36a306cf0e20?w=600&q=80" alt="Interior de la tienda">
+    <img src="https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=600&q=80" alt="Colección de vidrio premium">
+    <img src="https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=600&q=80" alt="Vaporizadores">
+    <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=600&q=80" alt="Incienso y aromas">
+    <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?w=600&q=80" alt="Accesorios">
+    <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="Encendedores">
+    <img src="https://images.unsplash.com/photo-1518614368389-5765896fa540?w=600&q=80" alt="Productos CBD">
+    <img src="https://images.unsplash.com/photo-1542525187-792a51b67bb7?w=600&q=80" alt="Hookahs">
+    <img src="https://images.unsplash.com/photo-1567922045116-2a00fae2ed03?w=600&q=80" alt="Almacenamiento">
+    <img src="https://images.unsplash.com/photo-1616690002498-1975d1e54691?w=600&q=80" alt="Vista de la tienda">
+    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&q=80" alt="Productos de limpieza">
+    <img src="https://images.unsplash.com/photo-1536782376847-5c9d14d97cc0?w=600&q=80" alt="Ambiente del local">
+  </div>
+
+  <footer>
+    &copy; 2026 Yerba Inc. &mdash; All Rights Reserved &mdash; Must be 18+ to purchase
+  </footer>
+</body>
+</html>

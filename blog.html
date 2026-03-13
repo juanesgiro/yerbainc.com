@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Yerba Inc.</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green-dark: #1a2e1a; --green-mid: #2d4a2d; --green-light: #4a7c4a;
+      --cream: #f5f0e8; --gold: #c9a84c; --text: #2c2c2c; --text-light: #6b6b6b;
+    }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; }
+    nav { background: var(--green-dark); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--cream); letter-spacing: 2px; text-transform: uppercase; }
+    .logo span { color: var(--gold); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { color: var(--cream); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+    nav a:hover { color: var(--gold); }
+    .page-hero { background: linear-gradient(rgba(26,46,26,0.8), rgba(26,46,26,0.85)), url('https://images.unsplash.com/photo-1536782376847-5c9d14d97cc0?w=1400&q=80') center/cover no-repeat; color: var(--cream); text-align: center; padding: 6rem 2rem; }
+    .page-hero h1 { font-size: 3rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .page-hero h1 span { color: var(--gold); }
+    .page-hero p { color: rgba(245,240,232,0.7); letter-spacing: 2px; text-transform: uppercase; }
+    .blog-posts { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+    .blog-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 2rem; display: grid; grid-template-columns: 300px 1fr; transition: transform 0.3s, box-shadow 0.3s; }
+    .blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .blog-img { width: 100%; height: 100%; object-fit: cover; min-height: 220px; }
+    .blog-body { padding: 2rem; }
+    .blog-date { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .blog-body h3 { font-size: 1.3rem; color: var(--green-dark); margin-bottom: 0.8rem; }
+    .blog-body p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
+    .blog-link { color: var(--green-dark); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; font-weight: 700; transition: color 0.3s; }
+    .blog-link:hover { color: var(--gold); }
+    footer { background: #111; color: rgba(245,240,232,0.4); text-align: center; padding: 2rem; font-size: 0.8rem; letter-spacing: 1px; }
+    @media (max-width: 768px) { nav ul { display: none; } .blog-card { grid-template-columns: 1fr; } .blog-img { height: 200px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" style="text-decoration:none;"><div class="logo">Yerba <span>Inc.</span></div></a>
+    <ul>
+      <li><a href="index.html#products">Shop</a></li>
+      <li><a href="historia.html">Historia</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="promociones.html">Promociones</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <h1>Nuestro <span>Blog</span></h1>
+    <p>Noticias, tips y novedades del mundo Yerba Inc.</p>
+  </div>
+
+  <div class="blog-posts">
+    <div class="blog-card">
+      <img class="blog-img" src="https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=600&q=80" alt="Nueva colección de vidrio">
+      <div class="blog-body">
+        <div class="blog-date">Marzo 10, 2026</div>
+        <h3>Nueva Colección de Vidrio Artesanal</h3>
+        <p>Acabamos de recibir una increíble colección de piezas de vidrio sopladas a mano por artistas locales. Cada pieza es única y viene con certificado de autenticidad.</p>
+        <a href="#" class="blog-link">Leer más &rarr;</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <img class="blog-img" src="https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=600&q=80" alt="Guía de vaporizadores">
+      <div class="blog-body">
+        <div class="blog-date">Marzo 5, 2026</div>
+        <h3>Guía Completa: Cómo Elegir tu Vaporizador</h3>
+        <p>No todos los vaporizadores son iguales. Te explicamos las diferencias entre portátiles y de escritorio, y cómo encontrar el que mejor se adapte a tus necesidades.</p>
+        <a href="#" class="blog-link">Leer más &rarr;</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <img class="blog-img" src="https://images.unsplash.com/photo-1518614368389-5765896fa540?w=600&q=80" alt="CBD beneficios">
+      <div class="blog-body">
+        <div class="blog-date">Febrero 28, 2026</div>
+        <h3>Todo lo que Necesitas Saber sobre CBD</h3>
+        <p>El CBD se ha convertido en uno de los productos más populares. Descubre sus usos, beneficios y cómo elegir productos de calidad.</p>
+        <a href="#" class="blog-link">Leer más &rarr;</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <img class="blog-img" src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=600&q=80" alt="Limpieza de piezas">
+      <div class="blog-body">
+        <div class="blog-date">Febrero 20, 2026</div>
+        <h3>5 Tips para Mantener tu Equipo como Nuevo</h3>
+        <p>La limpieza regular no solo mejora la experiencia, sino que alarga la vida de tus piezas. Te compartimos los mejores consejos de nuestros expertos.</p>
+        <a href="#" class="blog-link">Leer más &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Yerba Inc. &mdash; All Rights Reserved &mdash; Must be 18+ to purchase
+  </footer>
+</body>
+</html>

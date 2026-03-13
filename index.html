@@ -522,6 +522,36 @@
       color: rgba(245, 240, 232, 0.5);
     }
 
+    /* PHOTO COLUMNS */
+    .photo-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .photo-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .photo-column img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .photo-column img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav ul { display: none; }
@@ -529,6 +559,7 @@
       .about-content { grid-template-columns: 1fr; }
       .features { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
+      .photo-columns { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -550,9 +581,14 @@
   <nav>
     <div class="logo">Yerba <span>Inc.</span></div>
     <ul>
-      <li><a href="#products">Shop</a></li>
+      <li><a href="index.html#products">Shop</a></li>
+      <li><a href="historia.html">Historia</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="promociones.html">Promociones</a></li>
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
     </ul>
   </nav>
 
@@ -678,6 +714,24 @@
     <div class="carousel-arrows">
       <button class="carousel-arrow" onclick="scrollCarousel(-1)">&#8592;</button>
       <button class="carousel-arrow" onclick="scrollCarousel(1)">&#8594;</button>
+    </div>
+  </section>
+
+  <!-- Photo Columns -->
+  <section>
+    <h2 class="section-title">Our Vibe</h2>
+    <p class="section-sub">A glimpse into the Yerba Inc. experience</p>
+    <div class="photo-columns">
+      <div class="photo-column">
+        <img src="https://images.unsplash.com/photo-1527015175922-36a306cf0e20?w=600&q=80" alt="Smoke shop interior">
+        <img src="https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=600&q=80" alt="Glass collection">
+        <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=600&q=80" alt="Incense and aromas">
+      </div>
+      <div class="photo-column">
+        <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?w=600&q=80" alt="Accessories display">
+        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="Lighters collection">
+        <img src="https://images.unsplash.com/photo-1518614368389-5765896fa540?w=600&q=80" alt="CBD products">
+      </div>
     </div>
   </section>
 

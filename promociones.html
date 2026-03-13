@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promociones | Yerba Inc.</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green-dark: #1a2e1a; --green-mid: #2d4a2d; --green-light: #4a7c4a;
+      --cream: #f5f0e8; --gold: #c9a84c; --text: #2c2c2c; --text-light: #6b6b6b;
+    }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; }
+    nav { background: var(--green-dark); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--cream); letter-spacing: 2px; text-transform: uppercase; }
+    .logo span { color: var(--gold); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { color: var(--cream); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+    nav a:hover { color: var(--gold); }
+    .page-hero { background: linear-gradient(rgba(26,46,26,0.8), rgba(26,46,26,0.85)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1400&q=80') center/cover no-repeat; color: var(--cream); text-align: center; padding: 6rem 2rem; }
+    .page-hero h1 { font-size: 3rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .page-hero h1 span { color: var(--gold); }
+    .page-hero p { color: rgba(245,240,232,0.7); letter-spacing: 2px; text-transform: uppercase; }
+    .promos { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .promo-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s; }
+    .promo-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .promo-badge { background: var(--gold); color: var(--green-dark); display: inline-block; padding: 0.3rem 1rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 0 0 8px 0; }
+    .promo-body { padding: 1.5rem; }
+    .promo-body h3 { font-size: 1.2rem; color: var(--green-dark); margin-bottom: 0.5rem; }
+    .promo-body p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
+    .promo-price { display: flex; align-items: center; gap: 1rem; }
+    .promo-price .old { text-decoration: line-through; color: var(--text-light); font-size: 1rem; }
+    .promo-price .new { color: var(--gold); font-size: 1.4rem; font-weight: 700; }
+    .promo-cta { display: inline-block; margin-top: 1rem; padding: 0.6rem 1.5rem; border: 2px solid var(--green-dark); color: var(--green-dark); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; transition: all 0.3s; border-radius: 4px; }
+    .promo-cta:hover { background: var(--green-dark); color: var(--cream); }
+    footer { background: #111; color: rgba(245,240,232,0.4); text-align: center; padding: 2rem; font-size: 0.8rem; letter-spacing: 1px; }
+    @media (max-width: 768px) { nav ul { display: none; } .promos { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" style="text-decoration:none;"><div class="logo">Yerba <span>Inc.</span></div></a>
+    <ul>
+      <li><a href="index.html#products">Shop</a></li>
+      <li><a href="historia.html">Historia</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="promociones.html">Promociones</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <h1>Nuestras <span>Promociones</span></h1>
+    <p>Ofertas exclusivas para nuestros clientes</p>
+  </div>
+
+  <div class="promos">
+    <div class="promo-card">
+      <div class="promo-badge">20% OFF</div>
+      <div class="promo-body">
+        <h3>Premium Glass Collection</h3>
+        <p>Toda nuestra colección de vidrio artesanal con 20% de descuento. Solo por tiempo limitado.</p>
+        <div class="promo-price">
+          <span class="old">$45</span>
+          <span class="new">$36</span>
+        </div>
+        <a href="index.html#products" class="promo-cta">Ver Productos</a>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <div class="promo-badge">2x1</div>
+      <div class="promo-body">
+        <h3>Rolling Papers</h3>
+        <p>Compra un paquete de papers y llévate el segundo gratis. Todas las marcas incluidas.</p>
+        <div class="promo-price">
+          <span class="new">2 x $5</span>
+        </div>
+        <a href="index.html#products" class="promo-cta">Ver Productos</a>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <div class="promo-badge">15% OFF</div>
+      <div class="promo-body">
+        <h3>Vaporizers</h3>
+        <p>Descuento especial en todos los vaporizadores portátiles y de escritorio.</p>
+        <div class="promo-price">
+          <span class="old">$80</span>
+          <span class="new">$68</span>
+        </div>
+        <a href="index.html#products" class="promo-cta">Ver Productos</a>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <div class="promo-badge">COMBO</div>
+      <div class="promo-body">
+        <h3>Starter Kit</h3>
+        <p>Grinder + papers + lighter + storage jar. El combo perfecto para empezar.</p>
+        <div class="promo-price">
+          <span class="old">$50</span>
+          <span class="new">$35</span>
+        </div>
+        <a href="index.html#products" class="promo-cta">Ver Productos</a>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <div class="promo-badge">30% OFF</div>
+      <div class="promo-body">
+        <h3>Incienso y Aromas</h3>
+        <p>Gran liquidación en toda nuestra línea de inciensos premium y quemadores.</p>
+        <div class="promo-price">
+          <span class="old">$8</span>
+          <span class="new">$5.60</span>
+        </div>
+        <a href="index.html#products" class="promo-cta">Ver Productos</a>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <div class="promo-badge">NEW</div>
+      <div class="promo-body">
+        <h3>CBD Gummies</h3>
+        <p>Nuevos sabores de temporada disponibles. Precio especial de lanzamiento.</p>
+        <div class="promo-price">
+          <span class="old">$25</span>
+          <span class="new">$18</span>
+        </div>
+        <a href="index.html#products" class="promo-cta">Ver Productos</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Yerba Inc. &mdash; All Rights Reserved &mdash; Must be 18+ to purchase
+  </footer>
+</body>
+</html>
