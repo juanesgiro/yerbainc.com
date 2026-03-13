@@ -468,6 +468,58 @@
       opacity: 0.85;
     }
 
+    /* PSYCHEDELIC PLANT DIVIDERS */
+    .plant-divider {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding: 0;
+      line-height: 0;
+    }
+    .plant-divider svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @keyframes sway {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      75% { transform: rotate(-3deg); }
+    }
+    @keyframes sway-left {
+      0%, 100% { transform: rotate(0deg) scaleX(-1); }
+      25% { transform: rotate(-4deg) scaleX(-1); }
+      75% { transform: rotate(4deg) scaleX(-1); }
+    }
+    @keyframes grow-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+    @keyframes float-up {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+      50% { transform: translateY(-12px) rotate(5deg); opacity: 1; }
+    }
+    @keyframes leaf-wave {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+    @keyframes spiral-grow {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(10deg) scale(1.05); }
+    }
+    @keyframes psych-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .sway-r { animation: sway 5s ease-in-out infinite; transform-origin: bottom center; }
+    .sway-l { animation: sway-left 6s ease-in-out infinite; transform-origin: bottom center; }
+    .grow-p { animation: grow-pulse 4s ease-in-out infinite; transform-origin: center; }
+    .float-u { animation: float-up 5s ease-in-out infinite; }
+    .leaf-w { animation: leaf-wave 3s ease-in-out infinite; transform-origin: bottom left; }
+    .leaf-w2 { animation: leaf-wave 4s ease-in-out infinite reverse; transform-origin: bottom right; }
+    .spiral-g { animation: spiral-grow 7s ease-in-out infinite; transform-origin: bottom center; }
+    .spin-slow { animation: psych-spin 20s linear infinite; transform-origin: center; }
+
     /* FOOTER */
     footer {
       background: #111;
@@ -721,6 +773,68 @@
     </div>
   </section>
 
+  <!-- Plant Divider 1: Cannabis leaves growing from sides -->
+  <div class="plant-divider">
+    <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="leafG1" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#5a9a5a"/>
+          <stop offset="100%" style="stop-color:#2d4a2d"/>
+        </linearGradient>
+        <linearGradient id="leafG2" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#7ab87a"/>
+          <stop offset="100%" style="stop-color:#4a7c4a"/>
+        </linearGradient>
+        <linearGradient id="stemG" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#3d6b3d"/>
+          <stop offset="100%" style="stop-color:#1a2e1a"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="200" fill="#f5f0e8"/>
+      <!-- Left plant cluster -->
+      <g class="sway-r">
+        <path d="M0,200 Q30,140 60,100 Q70,80 50,60 Q80,70 90,100 Q100,60 80,30 Q110,50 110,90 Q130,50 110,20 Q145,45 130,90 Q90,130 60,200z" fill="url(#leafG1)" opacity="0.7"/>
+        <path d="M0,200 Q20,160 40,130 Q45,115 35,100 Q55,108 58,130 Q65,100 50,75 Q75,90 70,125 Q55,155 30,200z" fill="url(#leafG2)" opacity="0.5"/>
+      </g>
+      <g class="leaf-w">
+        <path d="M80,200 Q100,150 130,120 Q145,100 130,80 Q155,90 150,115 Q170,85 155,55 Q185,75 170,110 Q150,145 110,200z" fill="url(#leafG1)" opacity="0.55"/>
+      </g>
+      <!-- Vine across -->
+      <path d="M130,160 Q300,100 450,110 Q600,120 750,100 Q900,80 1070,160" fill="none" stroke="#3d6b3d" stroke-width="2" opacity="0.3"/>
+      <path d="M130,165 Q300,108 450,116 Q600,126 750,106 Q900,86 1070,165" fill="none" stroke="#4a7c4a" stroke-width="1" opacity="0.2"/>
+      <!-- Small leaves along vine -->
+      <g class="float-u"><ellipse cx="300" cy="108" rx="12" ry="6" fill="#5a9a5a" opacity="0.4" transform="rotate(-20,300,108)"/></g>
+      <g class="float-u" style="animation-delay:1s"><ellipse cx="450" cy="114" rx="10" ry="5" fill="#7ab87a" opacity="0.35" transform="rotate(15,450,114)"/></g>
+      <g class="float-u" style="animation-delay:2s"><ellipse cx="600" cy="122" rx="12" ry="6" fill="#5a9a5a" opacity="0.4" transform="rotate(-10,600,122)"/></g>
+      <g class="float-u" style="animation-delay:0.5s"><ellipse cx="750" cy="104" rx="10" ry="5" fill="#7ab87a" opacity="0.35" transform="rotate(20,750,104)"/></g>
+      <g class="float-u" style="animation-delay:1.5s"><ellipse cx="900" cy="90" rx="11" ry="5.5" fill="#5a9a5a" opacity="0.4" transform="rotate(-15,900,90)"/></g>
+      <!-- Center mandala -->
+      <g transform="translate(600,100)" class="spin-slow">
+        <circle r="25" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.4"/>
+        <circle r="15" fill="none" stroke="#4a7c4a" stroke-width="1" opacity="0.5"/>
+        <path d="M0,-25 Q8,-8 0,0 Q-8,-8 0,-25" fill="#c9a84c" opacity="0.3"/>
+        <path d="M0,25 Q-8,8 0,0 Q8,8 0,25" fill="#c9a84c" opacity="0.3"/>
+        <path d="M-25,0 Q-8,-8 0,0 Q-8,8 -25,0" fill="#4a7c4a" opacity="0.3"/>
+        <path d="M25,0 Q8,-8 0,0 Q8,8 25,0" fill="#4a7c4a" opacity="0.3"/>
+        <circle r="5" fill="#c9a84c" opacity="0.5"/>
+      </g>
+      <!-- Right plant cluster -->
+      <g class="sway-l" transform="translate(1200,0) scale(-1,1)">
+        <path d="M0,200 Q30,140 60,100 Q70,80 50,60 Q80,70 90,100 Q100,60 80,30 Q110,50 110,90 Q130,50 110,20 Q145,45 130,90 Q90,130 60,200z" fill="url(#leafG1)" opacity="0.7"/>
+        <path d="M0,200 Q20,160 40,130 Q45,115 35,100 Q55,108 58,130 Q65,100 50,75 Q75,90 70,125 Q55,155 30,200z" fill="url(#leafG2)" opacity="0.5"/>
+      </g>
+      <g class="leaf-w2" transform="translate(1200,0) scale(-1,1)">
+        <path d="M80,200 Q100,150 130,120 Q145,100 130,80 Q155,90 150,115 Q170,85 155,55 Q185,75 170,110 Q150,145 110,200z" fill="url(#leafG1)" opacity="0.55"/>
+      </g>
+      <!-- Floating spores/particles -->
+      <circle cx="250" cy="70" r="3" fill="#c9a84c" opacity="0.4" class="float-u"/>
+      <circle cx="400" cy="55" r="2" fill="#4a7c4a" opacity="0.3" class="float-u" style="animation-delay:1.2s"/>
+      <circle cx="550" cy="65" r="2.5" fill="#c9a84c" opacity="0.35" class="float-u" style="animation-delay:2.5s"/>
+      <circle cx="800" cy="60" r="3" fill="#4a7c4a" opacity="0.4" class="float-u" style="animation-delay:0.8s"/>
+      <circle cx="950" cy="70" r="2" fill="#c9a84c" opacity="0.3" class="float-u" style="animation-delay:1.8s"/>
+    </svg>
+  </div>
+
   <!-- Photo Columns -->
   <section>
     <h2 class="section-title">Our Vibe</h2>
@@ -739,6 +853,49 @@
     </div>
   </section>
 
+  <!-- Plant Divider 2: Tropical leaves and third eye -->
+  <div class="plant-divider" style="background: var(--green-dark);">
+    <svg viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect width="1200" height="220" fill="#1a2e1a"/>
+      <!-- Large tropical leaf left -->
+      <g class="sway-r">
+        <path d="M-20,220 Q10,180 40,140 Q50,100 30,70 Q60,80 70,110 Q80,70 60,35 Q100,55 90,100 Q110,60 95,25 Q135,50 115,100 Q130,65 120,30 Q160,60 140,110 Q100,160 50,220z" fill="#2d6b2d" opacity="0.6"/>
+        <path d="M-20,220 Q30,170 60,130 L65,135 Q35,175 -10,220z" fill="#1a5a1a" opacity="0.3"/>
+        <path d="M40,140 L70,110 L72,113 L42,143z" fill="#1a5a1a" opacity="0.2"/>
+      </g>
+      <g class="leaf-w">
+        <path d="M100,220 Q140,170 170,130 Q185,105 170,80 Q200,92 195,120 Q215,85 200,55 Q235,78 220,115 Q200,155 160,220z" fill="#3a7a3a" opacity="0.5"/>
+      </g>
+      <!-- Giant eye center -->
+      <g transform="translate(600,110)" class="grow-p">
+        <path d="M-120,0 Q-60,-70 0,-75 Q60,-70 120,0 Q60,70 0,75 Q-60,70 -120,0z" fill="none" stroke="#c9a84c" stroke-width="2" opacity="0.5"/>
+        <path d="M-90,0 Q-45,-50 0,-55 Q45,-50 90,0 Q45,50 0,55 Q-45,50 -90,0z" fill="none" stroke="#5a9a5a" stroke-width="1.5" opacity="0.4"/>
+        <circle r="35" fill="none" stroke="#c9a84c" stroke-width="2" opacity="0.6"/>
+        <circle r="22" fill="#2d4a2d" opacity="0.6"/>
+        <circle r="12" fill="#c9a84c" opacity="0.5"/>
+        <circle r="5" fill="#f5f0e8" opacity="0.7"/>
+        <!-- Rays -->
+        <line x1="0" y1="-80" x2="0" y2="-95" stroke="#c9a84c" stroke-width="1" opacity="0.3"/>
+        <line x1="40" y1="-70" x2="50" y2="-82" stroke="#c9a84c" stroke-width="1" opacity="0.25"/>
+        <line x1="-40" y1="-70" x2="-50" y2="-82" stroke="#c9a84c" stroke-width="1" opacity="0.25"/>
+        <line x1="70" y1="-45" x2="82" y2="-55" stroke="#c9a84c" stroke-width="1" opacity="0.2"/>
+        <line x1="-70" y1="-45" x2="-82" y2="-55" stroke="#c9a84c" stroke-width="1" opacity="0.2"/>
+      </g>
+      <!-- Right tropical leaves -->
+      <g class="sway-l" transform="translate(1200,0) scale(-1,1)">
+        <path d="M-20,220 Q10,180 40,140 Q50,100 30,70 Q60,80 70,110 Q80,70 60,35 Q100,55 90,100 Q110,60 95,25 Q135,50 115,100 Q100,160 50,220z" fill="#2d6b2d" opacity="0.6"/>
+      </g>
+      <g class="leaf-w2" transform="translate(1200,0) scale(-1,1)">
+        <path d="M100,220 Q140,170 170,130 Q185,105 170,80 Q200,92 195,120 Q215,85 200,55 Q235,78 220,115 Q200,155 160,220z" fill="#3a7a3a" opacity="0.5"/>
+      </g>
+      <!-- Floating particles -->
+      <circle cx="300" cy="80" r="3" fill="#c9a84c" opacity="0.4" class="float-u"/>
+      <circle cx="420" cy="150" r="2" fill="#5a9a5a" opacity="0.3" class="float-u" style="animation-delay:1s"/>
+      <circle cx="780" cy="150" r="2" fill="#5a9a5a" opacity="0.3" class="float-u" style="animation-delay:2s"/>
+      <circle cx="900" cy="80" r="3" fill="#c9a84c" opacity="0.4" class="float-u" style="animation-delay:0.5s"/>
+    </svg>
+  </div>
+
   <!-- About -->
   <div class="about-section" id="about">
     <div class="about-content">
@@ -751,6 +908,55 @@
         <img src="fotos/IMG_20260312_235554554_HDR.jpg" alt="Inside Yerba Inc. store">
       </div>
     </div>
+  </div>
+
+  <!-- Plant Divider 3: Hanging vines and lotus -->
+  <div class="plant-divider">
+    <svg viewBox="0 0 1200 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect width="1200" height="180" fill="#f5f0e8"/>
+      <!-- Hanging vines from top -->
+      <g class="sway-r">
+        <path d="M150,0 Q145,40 155,70 Q160,90 150,110 Q145,125 150,140" fill="none" stroke="#3d6b3d" stroke-width="2.5" opacity="0.5"/>
+        <ellipse cx="148" cy="50" rx="15" ry="8" fill="#5a9a5a" opacity="0.4" transform="rotate(-30,148,50)"/>
+        <ellipse cx="156" cy="85" rx="13" ry="7" fill="#4a7c4a" opacity="0.35" transform="rotate(25,156,85)"/>
+        <ellipse cx="147" cy="120" rx="12" ry="6" fill="#5a9a5a" opacity="0.3" transform="rotate(-20,147,120)"/>
+      </g>
+      <g class="leaf-w">
+        <path d="M300,0 Q295,35 305,60 Q310,85 300,105 Q296,120 302,135 Q305,150 298,165" fill="none" stroke="#4a7c4a" stroke-width="2" opacity="0.45"/>
+        <ellipse cx="298" cy="40" rx="14" ry="7" fill="#7ab87a" opacity="0.35" transform="rotate(20,298,40)"/>
+        <ellipse cx="306" cy="75" rx="12" ry="6" fill="#5a9a5a" opacity="0.3" transform="rotate(-25,306,75)"/>
+        <ellipse cx="299" cy="110" rx="14" ry="7" fill="#7ab87a" opacity="0.35" transform="rotate(15,299,110)"/>
+        <ellipse cx="303" cy="145" rx="11" ry="5.5" fill="#5a9a5a" opacity="0.3" transform="rotate(-18,303,145)"/>
+      </g>
+      <g class="sway-l" style="animation-delay:1s">
+        <path d="M900,0 Q905,45 895,80 Q890,100 898,125 Q902,145 895,170" fill="none" stroke="#3d6b3d" stroke-width="2.5" opacity="0.5"/>
+        <ellipse cx="903" cy="50" rx="15" ry="8" fill="#5a9a5a" opacity="0.4" transform="rotate(30,903,50)"/>
+        <ellipse cx="893" cy="90" rx="13" ry="7" fill="#4a7c4a" opacity="0.35" transform="rotate(-20,893,90)"/>
+        <ellipse cx="900" cy="130" rx="12" ry="6" fill="#5a9a5a" opacity="0.3" transform="rotate(25,900,130)"/>
+      </g>
+      <g class="leaf-w2">
+        <path d="M1050,0 Q1055,30 1045,55 Q1040,80 1048,100 Q1052,120 1045,140" fill="none" stroke="#4a7c4a" stroke-width="2" opacity="0.4"/>
+        <ellipse cx="1053" cy="35" rx="13" ry="6.5" fill="#7ab87a" opacity="0.3" transform="rotate(-22,1053,35)"/>
+        <ellipse cx="1043" cy="70" rx="14" ry="7" fill="#5a9a5a" opacity="0.35" transform="rotate(18,1043,70)"/>
+        <ellipse cx="1050" cy="108" rx="12" ry="6" fill="#7ab87a" opacity="0.3" transform="rotate(-15,1050,108)"/>
+      </g>
+      <!-- Center lotus flower -->
+      <g transform="translate(600,90)" class="grow-p">
+        <ellipse cx="0" cy="-40" rx="14" ry="40" fill="#c9a84c" opacity="0.25" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-40" rx="14" ry="40" fill="#5a9a5a" opacity="0.2" transform="rotate(30)"/>
+        <ellipse cx="0" cy="-40" rx="14" ry="40" fill="#c9a84c" opacity="0.25" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-40" rx="14" ry="40" fill="#5a9a5a" opacity="0.2" transform="rotate(90)"/>
+        <ellipse cx="0" cy="-40" rx="14" ry="40" fill="#c9a84c" opacity="0.25" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-40" rx="14" ry="40" fill="#5a9a5a" opacity="0.2" transform="rotate(150)"/>
+        <circle r="18" fill="#c9a84c" opacity="0.35"/>
+        <circle r="8" fill="#f5f0e8" opacity="0.5"/>
+      </g>
+      <!-- Floating particles -->
+      <circle cx="500" cy="60" r="3" fill="#c9a84c" opacity="0.35" class="float-u"/>
+      <circle cx="700" cy="50" r="2.5" fill="#4a7c4a" opacity="0.3" class="float-u" style="animation-delay:1.5s"/>
+      <circle cx="450" cy="130" r="2" fill="#c9a84c" opacity="0.3" class="float-u" style="animation-delay:2.2s"/>
+      <circle cx="750" cy="140" r="2" fill="#4a7c4a" opacity="0.25" class="float-u" style="animation-delay:0.7s"/>
+    </svg>
   </div>
 
   <!-- Features -->
@@ -773,6 +979,63 @@
       </div>
     </div>
   </section>
+
+  <!-- Plant Divider 4: Rising plants with sacred geometry -->
+  <div class="plant-divider">
+    <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect width="1200" height="200" fill="#f5f0e8"/>
+      <!-- Ground foliage left -->
+      <g class="sway-r">
+        <path d="M0,200 Q40,170 70,120 Q80,95 65,70 Q95,82 95,110 Q110,75 95,45 Q130,65 120,105 Q85,150 40,200z" fill="#4a7c4a" opacity="0.5"/>
+        <path d="M30,200 Q60,165 85,130 Q95,110 85,90 Q108,98 105,120 Q120,95 108,65 Q138,82 128,115 Q105,155 70,200z" fill="#5a9a5a" opacity="0.4"/>
+      </g>
+      <g class="leaf-w">
+        <path d="M120,200 Q150,160 175,125 Q188,102 175,80 Q202,90 198,115 Q215,85 202,58 Q232,75 220,110 Q198,150 158,200z" fill="#3d6b3d" opacity="0.45"/>
+      </g>
+      <!-- Mushrooms -->
+      <g class="grow-p" style="animation-delay:0.5s">
+        <path d="M220,200 L225,165 L232,165 L237,200z" fill="#8B7355" opacity="0.5"/>
+        <ellipse cx="228" cy="165" rx="18" ry="12" fill="#c9a84c" opacity="0.4"/>
+        <ellipse cx="224" cy="162" rx="4" ry="3" fill="#f5f0e8" opacity="0.3"/>
+        <ellipse cx="233" cy="160" rx="3" ry="2" fill="#f5f0e8" opacity="0.25"/>
+      </g>
+      <g class="grow-p" style="animation-delay:1.5s">
+        <path d="M960,200 L964,170 L970,170 L974,200z" fill="#8B7355" opacity="0.45"/>
+        <ellipse cx="967" cy="170" rx="15" ry="10" fill="#c9a84c" opacity="0.35"/>
+        <ellipse cx="963" cy="167" rx="3" ry="2.5" fill="#f5f0e8" opacity="0.3"/>
+      </g>
+      <!-- Center sacred geometry with plants -->
+      <g transform="translate(600,100)">
+        <g class="spin-slow">
+          <polygon points="0,-55 48,28 -48,28" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.35"/>
+          <polygon points="0,55 48,-28 -48,-28" fill="none" stroke="#4a7c4a" stroke-width="1.5" opacity="0.35"/>
+          <circle r="35" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.25"/>
+        </g>
+        <g class="grow-p">
+          <circle r="15" fill="#4a7c4a" opacity="0.3"/>
+          <circle r="6" fill="#c9a84c" opacity="0.5"/>
+        </g>
+        <!-- Leaves around center -->
+        <g class="leaf-w"><ellipse cx="-50" cy="-15" rx="20" ry="8" fill="#5a9a5a" opacity="0.3" transform="rotate(-30,-50,-15)"/></g>
+        <g class="leaf-w2"><ellipse cx="50" cy="-15" rx="20" ry="8" fill="#5a9a5a" opacity="0.3" transform="rotate(30,50,-15)"/></g>
+        <g class="leaf-w"><ellipse cx="-45" cy="20" rx="18" ry="7" fill="#4a7c4a" opacity="0.25" transform="rotate(20,-45,20)"/></g>
+        <g class="leaf-w2"><ellipse cx="45" cy="20" rx="18" ry="7" fill="#4a7c4a" opacity="0.25" transform="rotate(-20,45,20)"/></g>
+      </g>
+      <!-- Right foliage -->
+      <g class="sway-l" transform="translate(1200,0) scale(-1,1)">
+        <path d="M0,200 Q40,170 70,120 Q80,95 65,70 Q95,82 95,110 Q110,75 95,45 Q130,65 120,105 Q85,150 40,200z" fill="#4a7c4a" opacity="0.5"/>
+        <path d="M30,200 Q60,165 85,130 Q95,110 85,90 Q108,98 105,120 Q120,95 108,65 Q138,82 128,115 Q105,155 70,200z" fill="#5a9a5a" opacity="0.4"/>
+      </g>
+      <g class="leaf-w2" transform="translate(1200,0) scale(-1,1)">
+        <path d="M120,200 Q150,160 175,125 Q188,102 175,80 Q202,90 198,115 Q215,85 202,58 Q232,75 220,110 Q198,150 158,200z" fill="#3d6b3d" opacity="0.45"/>
+      </g>
+      <!-- Spores -->
+      <circle cx="350" cy="60" r="3" fill="#c9a84c" opacity="0.35" class="float-u"/>
+      <circle cx="480" cy="45" r="2" fill="#5a9a5a" opacity="0.3" class="float-u" style="animation-delay:1.3s"/>
+      <circle cx="720" cy="45" r="2" fill="#5a9a5a" opacity="0.3" class="float-u" style="animation-delay:2s"/>
+      <circle cx="850" cy="60" r="3" fill="#c9a84c" opacity="0.35" class="float-u" style="animation-delay:0.6s"/>
+    </svg>
+  </div>
 
   <!-- Contact -->
   <div class="contact-section" id="contact">
