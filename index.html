@@ -73,11 +73,72 @@
 
     /* HERO */
     .hero {
-      background: linear-gradient(rgba(26, 46, 26, 0.82), rgba(26, 46, 26, 0.88)),
-                  url('https://images.unsplash.com/photo-1527015175922-36a306cf0e20?w=1400&q=80') center/cover no-repeat;
+      background: linear-gradient(rgba(26, 46, 26, 0.7), rgba(26, 46, 26, 0.8)),
+                  url('https://images.unsplash.com/photo-1536782376847-5c9d14d97cc0?w=1400&q=80') center/cover no-repeat;
       color: var(--cream);
       text-align: center;
-      padding: 8rem 2rem;
+      padding: 10rem 2rem 8rem;
+      position: relative;
+      overflow: visible;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: -30px;
+      width: 300px;
+      height: 400px;
+      background: url('https://images.unsplash.com/photo-1509937528035-ad76f8df4943?w=400&q=80') center/contain no-repeat;
+      opacity: 0.6;
+      z-index: 2;
+      pointer-events: none;
+      filter: brightness(0.7) saturate(1.3);
+      transform: rotate(-15deg);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -30px;
+      width: 320px;
+      height: 420px;
+      background: url('https://images.unsplash.com/photo-1509937528035-ad76f8df4943?w=400&q=80') center/contain no-repeat;
+      opacity: 0.55;
+      z-index: 2;
+      pointer-events: none;
+      filter: brightness(0.7) saturate(1.3);
+      transform: scaleX(-1) rotate(-10deg);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    .palm-left,
+    .palm-right {
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .palm-left {
+      bottom: -60px;
+      left: -20px;
+      width: 250px;
+      opacity: 0.7;
+      transform: rotate(15deg);
+    }
+
+    .palm-right {
+      bottom: -60px;
+      right: -20px;
+      width: 250px;
+      opacity: 0.7;
+      transform: scaleX(-1) rotate(15deg);
     }
 
     .hero h1 {
@@ -85,6 +146,7 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
     }
 
     .hero h1 span {
@@ -97,6 +159,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       margin-bottom: 2.5rem;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.3);
     }
 
     .hero-btn {
@@ -475,10 +538,10 @@
   <div class="age-gate" id="ageGate">
     <div class="age-gate-box">
       <h2>Yerba <span style="color: var(--gold);">Inc.</span></h2>
-      <p>You must be 21 years or older to enter this site.</p>
+      <p>You must be 18 years or older to enter this site.</p>
       <div class="age-buttons">
-        <button class="age-btn yes" onclick="document.getElementById('ageGate').style.display='none'">I'm 21+</button>
-        <button class="age-btn no" onclick="window.location='https://google.com'">Under 21</button>
+        <button class="age-btn yes" onclick="document.getElementById('ageGate').style.display='none'">I'm 18+</button>
+        <button class="age-btn no" onclick="window.location='https://google.com'">Under 18</button>
       </div>
     </div>
   </div>
@@ -495,9 +558,13 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h1>Yerba <span>Inc.</span></h1>
-    <p class="tagline">Premium Smoke &amp; Accessories</p>
-    <a href="#products" class="hero-btn">Browse Collection</a>
+    <div class="hero-content">
+      <h1>Yerba <span>Inc.</span></h1>
+      <p class="tagline">Premium Smoke &amp; Accessories</p>
+      <a href="#products" class="hero-btn">Browse Collection</a>
+    </div>
+    <img class="palm-left" src="https://images.unsplash.com/photo-1577985051167-0d49eec18977?w=300&q=80" alt="">
+    <img class="palm-right" src="https://images.unsplash.com/photo-1577985051167-0d49eec18977?w=300&q=80" alt="">
   </section>
 
   <!-- Products -->
@@ -508,7 +575,7 @@
       <div class="carousel-track" id="carouselTrack">
         <div class="product-card">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1595425964272-fc617fa15e55?w=400&q=80" alt="Premium Glass">
+            <img src="https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=400&q=80" alt="Premium Glass">
           </div>
           <div class="product-info">
             <h3>Premium Glass</h3>
@@ -518,7 +585,7 @@
         </div>
         <div class="product-card">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?w=400&q=80" alt="Rolling Essentials">
+            <img src="https://images.unsplash.com/photo-1527015175922-36a306cf0e20?w=400&q=80" alt="Rolling Essentials">
           </div>
           <div class="product-info">
             <h3>Rolling Essentials</h3>
@@ -528,7 +595,7 @@
         </div>
         <div class="product-card">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1560913210-947c753f56ee?w=400&q=80" alt="Vaporizers">
+            <img src="https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=400&q=80" alt="Vaporizers">
           </div>
           <div class="product-info">
             <h3>Vaporizers</h3>
@@ -538,7 +605,7 @@
         </div>
         <div class="product-card">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=400&q=80" alt="Cleaning Supplies">
+            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80" alt="Cleaning Supplies">
           </div>
           <div class="product-info">
             <h3>Cleaning Supplies</h3>
@@ -548,7 +615,7 @@
         </div>
         <div class="product-card">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1616690002498-1975d1e54691?w=400&q=80" alt="Accessories">
+            <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?w=400&q=80" alt="Accessories">
           </div>
           <div class="product-info">
             <h3>Accessories</h3>
@@ -558,12 +625,52 @@
         </div>
         <div class="product-card">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1602178506390-52e7e4e8d53d?w=400&q=80" alt="Incense & Aroma">
+            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&q=80" alt="Incense & Aroma">
           </div>
           <div class="product-info">
             <h3>Incense &amp; Aroma</h3>
             <p>Premium scents &amp; burners</p>
             <span class="price">From $8</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&q=80" alt="Lighters">
+          </div>
+          <div class="product-info">
+            <h3>Lighters &amp; Torches</h3>
+            <p>Refillable &amp; windproof</p>
+            <span class="price">From $12</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1518614368389-5765896fa540?w=400&q=80" alt="CBD Products">
+          </div>
+          <div class="product-info">
+            <h3>CBD Products</h3>
+            <p>Oils, gummies &amp; topicals</p>
+            <span class="price">From $20</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1542525187-792a51b67bb7?w=400&q=80" alt="Hookahs">
+          </div>
+          <div class="product-info">
+            <h3>Hookahs</h3>
+            <p>Traditional &amp; modern styles</p>
+            <span class="price">From $55</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1567922045116-2a00fae2ed03?w=400&q=80" alt="Storage">
+          </div>
+          <div class="product-info">
+            <h3>Storage &amp; Cases</h3>
+            <p>Smell-proof bags &amp; jars</p>
+            <span class="price">From $18</span>
           </div>
         </div>
       </div>
@@ -583,7 +690,7 @@
         <p>From premium glassware to everyday essentials, we carry a carefully curated selection of brands you can trust. Stop by and experience the difference.</p>
       </div>
       <div class="about-visual">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Inside Yerba Inc. store">
+        <img src="https://images.unsplash.com/photo-1616690002498-1975d1e54691?w=600&q=80" alt="Inside Yerba Inc. store">
       </div>
     </div>
   </div>
@@ -602,7 +709,7 @@
         <p>Our team knows the products inside and out.</p>
       </div>
       <div class="feature-item">
-        <div class="feature-icon">&#x21BB;</div>
+        <div class="feature-icon">&#x18BB;</div>
         <h3>Easy Returns</h3>
         <p>Not satisfied? Return within 30 days, no questions asked.</p>
       </div>
@@ -647,7 +754,7 @@
       const x = e.clientX - rect.left;
       const center = rect.width / 2;
       const offset = (x - center) / center; // -1 to 1
-      speed = offset * 8;
+      speed = offset * 18;
     });
 
     carousel.addEventListener('mouseleave', () => {
@@ -676,7 +783,7 @@
 
   <!-- Footer -->
   <footer>
-    &copy; 2026 Yerba Inc. &mdash; All Rights Reserved &mdash; Must be 21+ to purchase
+    &copy; 2026 Yerba Inc. &mdash; All Rights Reserved &mdash; Must be 18+ to purchase
   </footer>
 
 </body>
