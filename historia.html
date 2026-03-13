@@ -24,6 +24,7 @@
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav a { color: var(--cream); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
     nav a:hover { color: var(--gold); }
+    .hamburger { display: none; background: none; border: none; color: var(--cream); font-size: 1.8rem; cursor: pointer; padding: 0.2rem 0.5rem; line-height: 1; }
     .page-hero { background: linear-gradient(rgba(26,46,26,0.8), rgba(26,46,26,0.85)), url('fotos/IMG_20260312_235554554_HDR.jpg') center/cover no-repeat; color: var(--cream); text-align: center; padding: 6rem 2rem; }
     .page-hero h1 { font-size: 3rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
     .page-hero h1 span { color: var(--gold); }
@@ -49,7 +50,23 @@
     .no-products { text-align: center; padding: 4rem 2rem; color: var(--text-light); font-size: 1.1rem; grid-column: 1 / -1; }
 
     footer { background: #111; color: rgba(245,240,232,0.4); text-align: center; padding: 2rem; font-size: 0.8rem; letter-spacing: 1px; }
-    @media (max-width: 768px) { nav ul { display: none; } .inventory-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--green-dark);
+        padding: 1rem 2rem 1.5rem;
+        gap: 0.8rem;
+        border-top: 1px solid rgba(245,240,232,0.1);
+      }
+      nav ul.open { display: flex; }
+      .hamburger { display: block; }
+      .inventory-grid { grid-template-columns: 1fr; }
+    }
     @media (min-width: 769px) and (max-width: 1024px) { .inventory-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
@@ -62,15 +79,16 @@
         <span class="brand-sub">Premium Smoke Shop</span>
       </div>
     </a>
-    <ul>
-      <li><a href="index.html#products">Shop</a></li>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menú">&#9776;</button>
+    <ul id="navMenu">
+      <li><a href="index.html#products">Tienda</a></li>
       <li><a href="historia.html">Inventario</a></li>
       <li><a href="galeria.html">Galería</a></li>
       <li><a href="promociones.html">Promociones</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-      <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+      <li><a href="index.html#about">Nosotros</a></li>
+      <li><a href="index.html#contact">Contacto</a></li>
+      <li><a href="https://instagram.com/1331_inc" target="_blank">Instagram</a></li>
     </ul>
   </nav>
 
@@ -83,10 +101,20 @@
   <div class="inventory-grid" id="inventoryGrid"></div>
 
   <footer>
-    &copy; 2026 Yerba Inc. &mdash; All Rights Reserved &mdash; Must be 18+ to purchase
+    &copy; 2026 Yerba Inc. &mdash; Todos los derechos reservados &mdash; Debes ser mayor de 18 años
   </footer>
 
   <script>
+    // Hamburger menu
+    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+      document.getElementById('navMenu').classList.toggle('open');
+    });
+    document.querySelectorAll('#navMenu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('navMenu').classList.remove('open');
+      });
+    });
+
     var DEFAULT_PRODUCTS = [
       { id: 1, name: 'Pipa Clásica', category: 'Pipas', price: 25, stock: 30, image: 'fotos/IMG_20260312_235554554_HDR.jpg' },
       { id: 2, name: 'Pipa de Madera', category: 'Pipas', price: 35, stock: 20, image: 'fotos/IMG_20260312_235554554_HDR.jpg' },
@@ -96,7 +124,7 @@
       { id: 6, name: 'Cuero 1 1/4', category: 'Cueros', price: 2, stock: 250, image: 'fotos/IMG_20260312_235601515_HDR.jpg' },
       { id: 7, name: 'Grinder Metálico', category: 'Grinders', price: 20, stock: 40, image: 'fotos/IMG_20260312_235607237_HDR.jpg' },
       { id: 8, name: 'Grinder Acrílico', category: 'Grinders', price: 10, stock: 60, image: 'fotos/IMG_20260312_235607237_HDR.jpg' },
-      { id: 9, name: 'Blон Clásico', category: 'Blons', price: 15, stock: 50, image: 'fotos/IMG_20260312_235623030_HDR.jpg' },
+      { id: 9, name: 'Blon Clásico', category: 'Blons', price: 15, stock: 50, image: 'fotos/IMG_20260312_235623030_HDR.jpg' },
       { id: 10, name: 'Blon Premium', category: 'Blons', price: 25, stock: 30, image: 'fotos/IMG_20260312_235623030_HDR.jpg' },
       { id: 11, name: 'Soplete Recargable', category: 'Sopletes', price: 18, stock: 35, image: 'fotos/IMG_20260312_235626649_HDR.jpg' },
       { id: 12, name: 'Soplete de Mesa', category: 'Sopletes', price: 30, stock: 20, image: 'fotos/IMG_20260312_235626649_HDR.jpg' },

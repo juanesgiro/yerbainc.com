@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yerba Inc. | Premium Smoke Shop</title>
+  <link rel="icon" type="image/jpeg" href="fotos/IMG-20260312-WA0016.jpg">
+  <meta property="og:title" content="Yerba Inc. | Premium Smoke Shop">
+  <meta property="og:description" content="Smoke shop en Anserma, Caldas. Accesorios para fumadores, pipas, bongs, grinders y mucho más. Calidad garantizada y atención personalizada.">
+  <meta property="og:image" content="fotos/IMG-20260312-WA0016.jpg">
+  <meta property="og:url" content="https://yerbainc.com">
+  <meta property="og:type" content="website">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -114,6 +120,18 @@
 
     nav a:hover {
       color: var(--gold);
+    }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      line-height: 1;
     }
 
     /* HERO */
@@ -427,6 +445,16 @@
       margin-bottom: 0.5rem;
     }
 
+    .contact-info a {
+      color: rgba(245, 240, 232, 0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+      color: var(--gold);
+    }
+
     .contact-form input,
     .contact-form textarea {
       width: 100%;
@@ -525,9 +553,40 @@
       background: #111;
       color: rgba(245, 240, 232, 0.4);
       text-align: center;
-      padding: 2rem;
+      padding: 2.5rem 2rem;
       font-size: 0.8rem;
       letter-spacing: 1px;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .footer-col h4 {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.75rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-col p, .footer-col a {
+      color: rgba(245, 240, 232, 0.5);
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+      display: block;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
     }
 
     /* AGE GATE */
@@ -620,14 +679,77 @@
       box-shadow: 0 8px 28px rgba(0,0,0,0.15);
     }
 
+    /* WHATSAPP BUTTON */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      z-index: 9998;
+      transition: transform 0.3s;
+      animation: wa-pulse 2s ease-in-out infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-float svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3); }
+      50% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.6); }
+    }
+
+    /* FADE IN ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      nav ul { display: none; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--green-dark);
+        padding: 1rem 2rem 1.5rem;
+        gap: 0.8rem;
+        border-top: 1px solid rgba(245,240,232,0.1);
+      }
+      nav ul.open {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
       .hero h1 { font-size: 2.2rem; }
       .about-content { grid-template-columns: 1fr; }
       .features { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .photo-columns { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: 1fr; text-align: center; }
     }
   </style>
 </head>
@@ -637,10 +759,10 @@
   <div class="age-gate" id="ageGate">
     <div class="age-gate-box">
       <h2>Yerba <span style="color: var(--gold);">Inc.</span></h2>
-      <p>You must be 18 years or older to enter this site.</p>
+      <p>Debes ser mayor de 18 años para entrar.</p>
       <div class="age-buttons">
-        <button class="age-btn yes" onclick="document.getElementById('ageGate').style.display='none'">I'm 18+</button>
-        <button class="age-btn no" onclick="window.location='https://google.com'">Under 18</button>
+        <button class="age-btn yes" onclick="document.getElementById('ageGate').style.display='none'">Soy mayor de 18</button>
+        <button class="age-btn no" onclick="window.location='https://google.com'">Menor de 18</button>
       </div>
     </div>
   </div>
@@ -654,15 +776,16 @@
         <span class="brand-sub">Premium Smoke Shop</span>
       </div>
     </a>
-    <ul>
-      <li><a href="index.html#products">Shop</a></li>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menú">&#9776;</button>
+    <ul id="navMenu">
+      <li><a href="index.html#products">Tienda</a></li>
       <li><a href="historia.html">Inventario</a></li>
       <li><a href="galeria.html">Galería</a></li>
       <li><a href="promociones.html">Promociones</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#contact">Contacto</a></li>
+      <li><a href="https://instagram.com/1331_inc" target="_blank">Instagram</a></li>
     </ul>
   </nav>
 
@@ -671,12 +794,12 @@
     <div class="hero-content">
       <img src="fotos/logo-yerba-inc.png" alt="Yerba Inc." style="max-width: 350px; width: 80%; margin-bottom: 0.5rem; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));">
       <p class="tagline">Premium Smoke &amp; Accessories</p>
-      <a href="#products" class="hero-btn">Browse Collection</a>
+      <a href="#products" class="hero-btn">Ver Colección</a>
     </div>
   </section>
 
   <!-- Products -->
-  <section id="products">
+  <section id="products" class="fade-in">
     <h2 class="section-title">Nuestra Colección</h2>
     <p class="section-sub">Explora nuestras categorías</p>
     <div class="carousel-wrapper" id="carousel">
@@ -836,9 +959,9 @@
   </div>
 
   <!-- Photo Columns -->
-  <section>
-    <h2 class="section-title">Our Vibe</h2>
-    <p class="section-sub">A glimpse into the Yerba Inc. experience</p>
+  <section class="fade-in">
+    <h2 class="section-title">Nuestro Estilo</h2>
+    <p class="section-sub">Una mirada a la experiencia Yerba Inc.</p>
     <div class="photo-columns">
       <div class="photo-column">
         <img src="fotos/IMG_20260312_235557154_HDR.jpg" alt="Interior de Yerba Inc.">
@@ -897,15 +1020,15 @@
   </div>
 
   <!-- About -->
-  <div class="about-section" id="about">
+  <div class="about-section fade-in" id="about">
     <div class="about-content">
       <div class="about-text">
-        <h2>About Yerba Inc.</h2>
-        <p>We're a locally owned smoke shop dedicated to providing the highest quality products and accessories. Our knowledgeable staff is here to help you find exactly what you need.</p>
-        <p>From premium glassware to everyday essentials, we carry a carefully curated selection of brands you can trust. Stop by and experience the difference.</p>
+        <h2>Sobre Yerba Inc.</h2>
+        <p>Somos un smoke shop ubicado en Anserma, Caldas, dedicado a ofrecer los mejores accesorios para fumadores. Contamos con una amplia variedad de productos: pipas, bongs, grinders, cueros, sopletes, bandejas y mucho más.</p>
+        <p>En Yerba Inc. nos apasiona brindarte atención personalizada y ayudarte a encontrar exactamente lo que necesitas. Visitanos y descubrí por qué somos la tienda preferida de la región.</p>
       </div>
       <div class="about-visual">
-        <img src="fotos/IMG_20260312_235554554_HDR.jpg" alt="Inside Yerba Inc. store">
+        <img src="fotos/IMG_20260312_235554554_HDR.jpg" alt="Interior de la tienda Yerba Inc.">
       </div>
     </div>
   </div>
@@ -960,22 +1083,22 @@
   </div>
 
   <!-- Features -->
-  <section>
+  <section class="fade-in">
     <div class="features">
       <div class="feature-item">
         <div class="feature-icon">&#x2713;</div>
-        <h3>Quality Guaranteed</h3>
-        <p>Every product is hand-selected and tested for quality.</p>
+        <h3>Calidad Garantizada</h3>
+        <p>Cada producto es seleccionado cuidadosamente para ofrecerte la mejor calidad.</p>
       </div>
       <div class="feature-item">
         <div class="feature-icon">&#x2605;</div>
-        <h3>Expert Staff</h3>
-        <p>Our team knows the products inside and out.</p>
+        <h3>Atención Personalizada</h3>
+        <p>Nuestro equipo te asesora para que encuentres exactamente lo que buscas.</p>
       </div>
       <div class="feature-item">
-        <div class="feature-icon">&#x18BB;</div>
-        <h3>Easy Returns</h3>
-        <p>Not satisfied? Return within 30 days, no questions asked.</p>
+        <div class="feature-icon">&#x1F4B0;</div>
+        <h3>Los Mejores Precios</h3>
+        <p>Productos de calidad a precios accesibles. La mejor relación precio-calidad de la región.</p>
       </div>
     </div>
   </section>
@@ -1038,30 +1161,51 @@
   </div>
 
   <!-- Contact -->
-  <div class="contact-section" id="contact">
-    <h2 class="section-title">Get In Touch</h2>
-    <p class="section-sub">Visit us or drop a message</p>
+  <div class="contact-section fade-in" id="contact">
+    <h2 class="section-title">Contáctanos</h2>
+    <p class="section-sub">Visítanos o envíanos un mensaje</p>
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>Location</h3>
+        <h3>Ubicación</h3>
         <p>Anserma, Caldas</p>
         <br>
-        <h3>Hours</h3>
+        <h3>Horario</h3>
         <p>Lun - Dom: 10:00 AM - 10:30 PM</p>
         <br>
-        <h3>Phone</h3>
-        <p>320 524 0134</p>
+        <h3>Teléfono</h3>
+        <p><a href="https://wa.me/573205240134">320 524 0134</a></p>
+        <br>
+        <h3>Redes</h3>
+        <p><a href="https://instagram.com/1331_inc" target="_blank">@1331_inc en Instagram</a></p>
       </div>
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent! We\'ll get back to you soon.');">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Message"></textarea>
-        <button type="submit">Send Message</button>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('¡Mensaje enviado! Te responderemos pronto.');">
+        <input type="text" placeholder="Nombre" required>
+        <input type="email" placeholder="Correo" required>
+        <textarea placeholder="Mensaje"></textarea>
+        <button type="submit">Enviar Mensaje</button>
       </form>
     </div>
   </div>
 
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/573205240134" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
   <script>
+    // Hamburger menu
+    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+      document.getElementById('navMenu').classList.toggle('open');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('#navMenu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('navMenu').classList.remove('open');
+      });
+    });
+
+    // Carousel
     const carousel = document.getElementById('carousel');
     const track = document.getElementById('carouselTrack');
     let scrollPos = 0;
@@ -1072,7 +1216,7 @@
       const rect = carousel.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const center = rect.width / 2;
-      const offset = (x - center) / center; // -1 to 1
+      const offset = (x - center) / center;
       speed = offset * 18;
     });
 
@@ -1098,11 +1242,42 @@
       scrollPos = Math.max(0, Math.min(scrollPos, maxScroll));
       track.style.transform = `translateX(${-scrollPos}px)`;
     }
+
+    // Fade-in on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    fadeEls.forEach(function(el) {
+      observer.observe(el);
+    });
   </script>
 
   <!-- Footer -->
   <footer>
-    &copy; 2026 Yerba Inc. &mdash; All Rights Reserved &mdash; Must be 18+ to purchase
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Yerba Inc.</h4>
+        <p>Tu smoke shop de confianza en Anserma, Caldas.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Horario</h4>
+        <p>Lun - Dom</p>
+        <p>10:00 AM - 10:30 PM</p>
+        <p>Tel: 320 524 0134</p>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <a href="https://instagram.com/1331_inc" target="_blank">Instagram @1331_inc</a>
+        <a href="https://wa.me/573205240134" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+    &copy; 2026 Yerba Inc. &mdash; Todos los derechos reservados &mdash; Debes ser mayor de 18 años
     <br><a href="login.html" style="color: rgba(245,240,232,0.25); text-decoration: none; font-size: 0.7rem; letter-spacing: 1px;">Admin</a>
   </footer>
 
