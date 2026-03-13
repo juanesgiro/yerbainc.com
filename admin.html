@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Admin | Yerba Inc.</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green-dark: #1a2e1a;
+      --green-mid: #2d4a2d;
+      --green-light: #4a7c4a;
+      --cream: #f5f0e8;
+      --gold: #c9a84c;
+      --text: #2c2c2c;
+      --text-light: #6b6b6b;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* ADMIN NAV */
+    .admin-nav {
+      background: var(--green-dark);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .admin-nav .brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--cream);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-style: italic;
+      text-decoration: none;
+    }
+
+    .admin-nav .brand span {
+      color: var(--gold);
+    }
+
+    .admin-nav .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .admin-nav .nav-user {
+      color: rgba(245, 240, 232, 0.6);
+      font-size: 0.85rem;
+    }
+
+    .btn-logout {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--gold);
+      background: none;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .btn-logout:hover {
+      background: var(--gold);
+      color: var(--green-dark);
+    }
+
+    /* MAIN */
+    .admin-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .admin-title {
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green-dark);
+      margin-bottom: 2rem;
+    }
+
+    /* DASHBOARD CARDS */
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .dash-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .dash-card h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .dash-card .dash-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .dash-card .dash-value.gold {
+      color: var(--gold);
+    }
+
+    /* SECTIONS */
+    .admin-section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+    }
+
+    .admin-section h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--green-dark);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--cream);
+    }
+
+    /* FORM */
+    .product-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .product-form .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--green-dark);
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 2px solid rgba(26, 46, 26, 0.12);
+      background: var(--cream);
+      color: var(--text);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .form-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      padding: 0.7rem 1.8rem;
+      background: var(--green-dark);
+      color: var(--cream);
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-mid);
+    }
+
+    .btn-secondary {
+      padding: 0.7rem 1.8rem;
+      background: none;
+      color: var(--text-light);
+      border: 2px solid rgba(0,0,0,0.1);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.3s;
+      display: none;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-light);
+    }
+
+    /* TABLE */
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      text-align: left;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      padding: 0.8rem 1rem;
+      border-bottom: 2px solid var(--cream);
+    }
+
+    tbody td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--cream);
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+
+    tbody tr:hover {
+      background: rgba(201, 168, 76, 0.05);
+    }
+
+    .product-thumb {
+      width: 45px;
+      height: 45px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--cream);
+    }
+
+    .stock-low {
+      color: #c53030;
+      font-weight: 600;
+    }
+
+    .stock-ok {
+      color: var(--green-light);
+      font-weight: 600;
+    }
+
+    .btn-action {
+      padding: 0.35rem 0.7rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    .btn-action:hover {
+      opacity: 0.8;
+    }
+
+    .btn-edit {
+      background: var(--gold);
+      color: var(--green-dark);
+      margin-right: 0.4rem;
+    }
+
+    .btn-delete {
+      background: #e53e3e;
+      color: #fff;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-light);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: rgba(245, 240, 232, 0.4);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .dashboard { grid-template-columns: 1fr; }
+      .product-form { grid-template-columns: 1fr; }
+      .admin-nav { flex-direction: column; gap: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Admin Nav -->
+  <div class="admin-nav">
+    <a href="index.html" class="brand">Yerba <span>Inc.</span></a>
+    <div class="nav-right">
+      <span class="nav-user">Admin</span>
+      <button class="btn-logout" id="btnLogout">Cerrar Sesi&oacute;n</button>
+    </div>
+  </div>
+
+  <div class="admin-main">
+    <h1 class="admin-title">Panel de Inventario</h1>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <div class="dash-card">
+        <h3>Total Productos</h3>
+        <div class="dash-value" id="totalProducts">0</div>
+      </div>
+      <div class="dash-card">
+        <h3>Categor&iacute;as</h3>
+        <div class="dash-value" id="totalCategories">0</div>
+      </div>
+      <div class="dash-card">
+        <h3>Valor Total Inventario</h3>
+        <div class="dash-value gold" id="totalValue">$0</div>
+      </div>
+    </div>
+
+    <!-- Add/Edit Product Form -->
+    <div class="admin-section">
+      <h2 id="formTitle">Agregar Producto</h2>
+      <form class="product-form" id="productForm">
+        <input type="hidden" id="editId" value="">
+        <div class="form-group">
+          <label for="prodName">Nombre</label>
+          <input type="text" id="prodName" placeholder="Nombre del producto" required>
+        </div>
+        <div class="form-group">
+          <label for="prodCategory">Categor&iacute;a</label>
+          <select id="prodCategory" required>
+            <option value="">Seleccionar...</option>
+            <option value="Glass">Glass</option>
+            <option value="Rolling">Rolling</option>
+            <option value="Vaporizers">Vaporizers</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Incense">Incense</option>
+            <option value="Lighters">Lighters</option>
+            <option value="CBD">CBD</option>
+            <option value="Hookahs">Hookahs</option>
+            <option value="Storage">Storage</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="prodPrice">Precio ($)</label>
+          <input type="number" id="prodPrice" placeholder="0.00" min="0" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="prodStock">Stock</label>
+          <input type="number" id="prodStock" placeholder="0" min="0" required>
+        </div>
+        <div class="form-group full-width">
+          <label for="prodImage">URL de Imagen</label>
+          <input type="url" id="prodImage" placeholder="https://...">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" id="btnSubmit">Agregar Producto</button>
+          <button type="button" class="btn-secondary" id="btnCancel">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Inventory Table -->
+    <div class="admin-section">
+      <h2>Inventario</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Img</th>
+              <th>Nombre</th>
+              <th>Categor&iacute;a</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="productTable">
+          </tbody>
+        </table>
+        <div class="empty-state" id="emptyState" style="display:none;">No hay productos en el inventario.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Yerba Inc. &mdash; Panel de Administraci&oacute;n
+  </footer>
+
+  <script>
+    // Auth check
+    if (!localStorage.getItem('yerba_admin_session')) {
+      window.location.href = 'login.html';
+    }
+
+    // Logout
+    document.getElementById('btnLogout').addEventListener('click', function() {
+      localStorage.removeItem('yerba_admin_session');
+      window.location.href = 'login.html';
+    });
+
+    // Default products (from carousel)
+    var DEFAULT_PRODUCTS = [
+      { id: 1, name: 'Premium Glass', category: 'Glass', price: 45, stock: 25, image: 'https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=400&q=80' },
+      { id: 2, name: 'Rolling Essentials', category: 'Rolling', price: 5, stock: 100, image: 'https://images.unsplash.com/photo-1527015175922-36a306cf0e20?w=400&q=80' },
+      { id: 3, name: 'Vaporizers', category: 'Vaporizers', price: 80, stock: 15, image: 'https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=400&q=80' },
+      { id: 4, name: 'Cleaning Supplies', category: 'Cleaning', price: 10, stock: 60, image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80' },
+      { id: 5, name: 'Accessories', category: 'Accessories', price: 15, stock: 80, image: 'https://images.unsplash.com/photo-1545128485-c400e7702796?w=400&q=80' },
+      { id: 6, name: 'Incense & Aroma', category: 'Incense', price: 8, stock: 90, image: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&q=80' },
+      { id: 7, name: 'Lighters & Torches', category: 'Lighters', price: 12, stock: 70, image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&q=80' },
+      { id: 8, name: 'CBD Products', category: 'CBD', price: 20, stock: 40, image: 'https://images.unsplash.com/photo-1518614368389-5765896fa540?w=400&q=80' },
+      { id: 9, name: 'Hookahs', category: 'Hookahs', price: 55, stock: 10, image: 'https://images.unsplash.com/photo-1542525187-792a51b67bb7?w=400&q=80' },
+      { id: 10, name: 'Storage & Cases', category: 'Storage', price: 18, stock: 45, image: 'https://images.unsplash.com/photo-1567922045116-2a00fae2ed03?w=400&q=80' }
+    ];
+
+    // Initialize products
+    function getProducts() {
+      var stored = localStorage.getItem('yerba_products');
+      if (!stored) {
+        localStorage.setItem('yerba_products', JSON.stringify(DEFAULT_PRODUCTS));
+        return DEFAULT_PRODUCTS;
+      }
+      return JSON.parse(stored);
+    }
+
+    function saveProducts(products) {
+      localStorage.setItem('yerba_products', JSON.stringify(products));
+    }
+
+    function getNextId(products) {
+      if (products.length === 0) return 1;
+      return Math.max.apply(null, products.map(function(p) { return p.id; })) + 1;
+    }
+
+    // Render dashboard
+    function renderDashboard(products) {
+      document.getElementById('totalProducts').textContent = products.length;
+      var categories = [];
+      products.forEach(function(p) {
+        if (categories.indexOf(p.category) === -1) categories.push(p.category);
+      });
+      document.getElementById('totalCategories').textContent = categories.length;
+      var total = products.reduce(function(sum, p) { return sum + (p.price * p.stock); }, 0);
+      document.getElementById('totalValue').textContent = '$' + total.toLocaleString('en-US', { minimumFractionDigits: 0 });
+    }
+
+    // Render table
+    function renderTable(products) {
+      var tbody = document.getElementById('productTable');
+      var empty = document.getElementById('emptyState');
+
+      if (products.length === 0) {
+        tbody.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+
+      empty.style.display = 'none';
+      tbody.innerHTML = products.map(function(p) {
+        var stockClass = p.stock < 15 ? 'stock-low' : 'stock-ok';
+        var imgHtml = p.image
+          ? '<img src="' + escapeHtml(p.image) + '" alt="" class="product-thumb">'
+          : '<div class="product-thumb" style="display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:0.7rem;">N/A</div>';
+        return '<tr>' +
+          '<td>' + imgHtml + '</td>' +
+          '<td>' + escapeHtml(p.name) + '</td>' +
+          '<td>' + escapeHtml(p.category) + '</td>' +
+          '<td>$' + Number(p.price).toFixed(2) + '</td>' +
+          '<td class="' + stockClass + '">' + p.stock + '</td>' +
+          '<td>' +
+            '<button class="btn-action btn-edit" onclick="editProduct(' + p.id + ')">Editar</button>' +
+            '<button class="btn-action btn-delete" onclick="deleteProduct(' + p.id + ')">Eliminar</button>' +
+          '</td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    // Render all
+    function render() {
+      var products = getProducts();
+      renderDashboard(products);
+      renderTable(products);
+    }
+
+    // Form handling
+    var form = document.getElementById('productForm');
+    var btnSubmit = document.getElementById('btnSubmit');
+    var btnCancel = document.getElementById('btnCancel');
+    var formTitle = document.getElementById('formTitle');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var products = getProducts();
+      var editId = document.getElementById('editId').value;
+
+      var product = {
+        name: document.getElementById('prodName').value.trim(),
+        category: document.getElementById('prodCategory').value,
+        price: parseFloat(document.getElementById('prodPrice').value),
+        stock: parseInt(document.getElementById('prodStock').value, 10),
+        image: document.getElementById('prodImage').value.trim()
+      };
+
+      if (editId) {
+        // Update existing
+        var id = parseInt(editId, 10);
+        products = products.map(function(p) {
+          if (p.id === id) {
+            return Object.assign({}, p, product);
+          }
+          return p;
+        });
+      } else {
+        // Add new
+        product.id = getNextId(products);
+        products.push(product);
+      }
+
+      saveProducts(products);
+      resetForm();
+      render();
+    });
+
+    btnCancel.addEventListener('click', function() {
+      resetForm();
+    });
+
+    function resetForm() {
+      form.reset();
+      document.getElementById('editId').value = '';
+      formTitle.textContent = 'Agregar Producto';
+      btnSubmit.textContent = 'Agregar Producto';
+      btnCancel.style.display = 'none';
+    }
+
+    // Edit
+    window.editProduct = function(id) {
+      var products = getProducts();
+      var p = products.find(function(prod) { return prod.id === id; });
+      if (!p) return;
+
+      document.getElementById('editId').value = p.id;
+      document.getElementById('prodName').value = p.name;
+      document.getElementById('prodCategory').value = p.category;
+      document.getElementById('prodPrice').value = p.price;
+      document.getElementById('prodStock').value = p.stock;
+      document.getElementById('prodImage').value = p.image || '';
+
+      formTitle.textContent = 'Editar Producto';
+      btnSubmit.textContent = 'Guardar Cambios';
+      btnCancel.style.display = 'inline-block';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Delete
+    window.deleteProduct = function(id) {
+      if (!confirm('¿Eliminar este producto del inventario?')) return;
+      var products = getProducts().filter(function(p) { return p.id !== id; });
+      saveProducts(products);
+      render();
+    };
+
+    // Initial render
+    render();
+  </script>
+
+</body>
+</html>
