@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historia | Yerba Inc.</title>
+  <title>Inventario | Yerba Inc.</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -14,31 +14,57 @@
     nav { background: var(--green-dark); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
     .logo { font-size: 1.5rem; font-weight: 700; color: var(--cream); letter-spacing: 2px; text-transform: uppercase; }
     .logo span { color: var(--gold); }
+    .nav-logo-img { height: 45px; filter: drop-shadow(0 0 6px rgba(201,168,76,0.4)); transition: filter 0.3s, transform 0.3s; }
+    .nav-logo-img:hover { filter: drop-shadow(0 0 12px rgba(201,168,76,0.7)); transform: scale(1.05); }
+    .nav-brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+    .nav-brand .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-brand .brand-name { font-size: 1.4rem; font-weight: 800; color: var(--cream); letter-spacing: 3px; text-transform: uppercase; font-style: italic; }
+    .nav-brand .brand-name em { color: var(--gold); font-style: normal; }
+    .nav-brand .brand-sub { font-size: 0.55rem; color: rgba(245,240,232,0.5); letter-spacing: 4px; text-transform: uppercase; }
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav a { color: var(--cream); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
     nav a:hover { color: var(--gold); }
-    .page-hero { background: linear-gradient(rgba(26,46,26,0.8), rgba(26,46,26,0.85)), url('https://images.unsplash.com/photo-1616690002498-1975d1e54691?w=1400&q=80') center/cover no-repeat; color: var(--cream); text-align: center; padding: 6rem 2rem; }
+    .page-hero { background: linear-gradient(rgba(26,46,26,0.8), rgba(26,46,26,0.85)), url('fotos/IMG_20260312_235554554_HDR.jpg') center/cover no-repeat; color: var(--cream); text-align: center; padding: 6rem 2rem; }
     .page-hero h1 { font-size: 3rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
     .page-hero h1 span { color: var(--gold); }
     .page-hero p { color: rgba(245,240,232,0.7); letter-spacing: 2px; text-transform: uppercase; }
-    .content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
-    .content h2 { font-size: 1.8rem; color: var(--green-dark); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
-    .content p { color: var(--text-light); margin-bottom: 1.5rem; font-size: 1rem; }
-    .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-    .value-card { background: #fff; padding: 2rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-    .value-card h3 { color: var(--green-dark); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; font-size: 1rem; }
-    .value-card p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 0; }
-    .value-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+    /* Filter Bar */
+    .filter-bar { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 0; display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+    .filter-pill { padding: 0.5rem 1.2rem; border: 2px solid var(--green-dark); background: none; color: var(--green-dark); border-radius: 50px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; font-family: inherit; }
+    .filter-pill:hover { background: var(--green-mid); color: var(--cream); border-color: var(--green-mid); }
+    .filter-pill.active { background: var(--green-dark); color: var(--gold); border-color: var(--green-dark); }
+
+    /* Product Grid */
+    .inventory-grid { max-width: 1100px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .product-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .product-card img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.4s; }
+    .product-card:hover img { transform: scale(1.05); }
+    .product-card .img-wrap { overflow: hidden; background: var(--green-mid); }
+    .product-card .info { padding: 1.2rem 1.5rem; }
+    .product-card .info h3 { font-size: 1.1rem; color: var(--green-dark); margin-bottom: 0.3rem; }
+    .product-card .info .cat { font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .product-card .info .price { font-weight: 700; color: var(--gold); font-size: 1.15rem; }
+    .no-products { text-align: center; padding: 4rem 2rem; color: var(--text-light); font-size: 1.1rem; grid-column: 1 / -1; }
+
     footer { background: #111; color: rgba(245,240,232,0.4); text-align: center; padding: 2rem; font-size: 0.8rem; letter-spacing: 1px; }
-    @media (max-width: 768px) { nav ul { display: none; } .values { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { nav ul { display: none; } .inventory-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 769px) and (max-width: 1024px) { .inventory-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html" style="text-decoration:none;"><div class="logo">Yerba <span>Inc.</span></div></a>
+    <a href="index.html" class="nav-brand">
+      <img src="fotos/IMG-20260312-WA0016.jpg" alt="Yerba Inc." class="nav-logo-img">
+      <div class="brand-text">
+        <span class="brand-name">Yerba <em>Inc.</em></span>
+        <span class="brand-sub">Premium Smoke Shop</span>
+      </div>
+    </a>
     <ul>
       <li><a href="index.html#products">Shop</a></li>
-      <li><a href="historia.html">Historia</a></li>
+      <li><a href="historia.html">Inventario</a></li>
       <li><a href="galeria.html">Galería</a></li>
       <li><a href="promociones.html">Promociones</a></li>
       <li><a href="blog.html">Blog</a></li>
@@ -49,42 +75,98 @@
   </nav>
 
   <div class="page-hero">
-    <h1>Nuestra <span>Historia</span></h1>
-    <p>Conoce quiénes somos y de dónde venimos</p>
+    <h1>Nuestro <span>Inventario</span></h1>
+    <p>Explora nuestra colección completa de productos</p>
   </div>
 
-  <div class="content">
-    <h2>Nuestra Historia</h2>
-    <p>Yerba Inc. nació de la pasión por ofrecer productos premium de la más alta calidad. Desde nuestros inicios, nos hemos dedicado a buscar y seleccionar las mejores marcas y productos para nuestros clientes.</p>
-    <p>Lo que comenzó como una pequeña tienda local se ha convertido en un referente de calidad y buen servicio. Cada producto en nuestras estanterías ha sido cuidadosamente seleccionado para asegurar que cumple con nuestros estándares de excelencia.</p>
-
-    <h2>Misión</h2>
-    <p>Proveer a nuestra comunidad con los mejores productos y accesorios del mercado, acompañados de un servicio excepcional y un ambiente acogedor donde cada cliente se sienta como en casa.</p>
-
-    <h2>Visión</h2>
-    <p>Ser la tienda de referencia en nuestra ciudad, reconocida por la calidad de nuestros productos, la calidez de nuestro equipo y nuestro compromiso con la comunidad.</p>
-
-    <div class="values">
-      <div class="value-card">
-        <div class="value-icon">&#x2713;</div>
-        <h3>Calidad</h3>
-        <p>Solo trabajamos con las mejores marcas y productos verificados.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">&#x2605;</div>
-        <h3>Servicio</h3>
-        <p>Nuestro equipo está siempre listo para ayudarte a encontrar lo que necesitas.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">&#x2764;</div>
-        <h3>Comunidad</h3>
-        <p>Somos parte del barrio y nos enorgullece servir a nuestra gente.</p>
-      </div>
-    </div>
-  </div>
+  <div class="filter-bar" id="filterBar"></div>
+  <div class="inventory-grid" id="inventoryGrid"></div>
 
   <footer>
     &copy; 2026 Yerba Inc. &mdash; All Rights Reserved &mdash; Must be 18+ to purchase
   </footer>
+
+  <script>
+    var DEFAULT_PRODUCTS = [
+      { id: 1, name: 'Premium Glass', category: 'Glass', price: 45, stock: 25, image: 'https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=400&q=80' },
+      { id: 2, name: 'Rolling Essentials', category: 'Rolling', price: 5, stock: 100, image: 'https://images.unsplash.com/photo-1527015175922-36a306cf0e20?w=400&q=80' },
+      { id: 3, name: 'Vaporizers', category: 'Vaporizers', price: 80, stock: 15, image: 'https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=400&q=80' },
+      { id: 4, name: 'Cleaning Supplies', category: 'Cleaning', price: 10, stock: 60, image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80' },
+      { id: 5, name: 'Accessories', category: 'Accessories', price: 15, stock: 80, image: 'https://images.unsplash.com/photo-1545128485-c400e7702796?w=400&q=80' },
+      { id: 6, name: 'Incense & Aroma', category: 'Incense', price: 8, stock: 90, image: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&q=80' },
+      { id: 7, name: 'Lighters & Torches', category: 'Lighters', price: 12, stock: 70, image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&q=80' },
+      { id: 8, name: 'CBD Products', category: 'CBD', price: 20, stock: 40, image: 'https://images.unsplash.com/photo-1518614368389-5765896fa540?w=400&q=80' },
+      { id: 9, name: 'Hookahs', category: 'Hookahs', price: 55, stock: 10, image: 'https://images.unsplash.com/photo-1542525187-792a51b67bb7?w=400&q=80' },
+      { id: 10, name: 'Storage & Cases', category: 'Storage', price: 18, stock: 45, image: 'https://images.unsplash.com/photo-1567922045116-2a00fae2ed03?w=400&q=80' }
+    ];
+
+    function getProducts() {
+      var stored = localStorage.getItem('yerba_products');
+      if (!stored) {
+        localStorage.setItem('yerba_products', JSON.stringify(DEFAULT_PRODUCTS));
+        return DEFAULT_PRODUCTS;
+      }
+      return JSON.parse(stored);
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    }
+
+    var currentFilter = 'Todos';
+
+    function render() {
+      var products = getProducts();
+
+      // Build categories
+      var categories = ['Todos'];
+      products.forEach(function(p) {
+        if (categories.indexOf(p.category) === -1) categories.push(p.category);
+      });
+
+      // Render filter pills
+      var filterBar = document.getElementById('filterBar');
+      filterBar.innerHTML = categories.map(function(cat) {
+        var activeClass = cat === currentFilter ? ' active' : '';
+        return '<button class="filter-pill' + activeClass + '" data-cat="' + escapeHtml(cat) + '">' + escapeHtml(cat) + '</button>';
+      }).join('');
+
+      // Filter products
+      var filtered = currentFilter === 'Todos' ? products : products.filter(function(p) {
+        return p.category === currentFilter;
+      });
+
+      // Render grid
+      var grid = document.getElementById('inventoryGrid');
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="no-products">No hay productos en esta categoría.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(function(p) {
+        var imgSrc = p.image || 'fotos/IMG_20260312_235554554_HDR.jpg';
+        return '<div class="product-card">' +
+          '<div class="img-wrap"><img src="' + escapeHtml(imgSrc) + '" alt="' + escapeHtml(p.name) + '"></div>' +
+          '<div class="info">' +
+            '<h3>' + escapeHtml(p.name) + '</h3>' +
+            '<p class="cat">' + escapeHtml(p.category) + '</p>' +
+            '<span class="price">$' + Number(p.price).toFixed(2) + '</span>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    // Delegate click on filter pills
+    document.getElementById('filterBar').addEventListener('click', function(e) {
+      if (e.target.classList.contains('filter-pill')) {
+        currentFilter = e.target.getAttribute('data-cat');
+        render();
+      }
+    });
+
+    render();
+  </script>
 </body>
 </html>

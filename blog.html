@@ -14,10 +14,17 @@
     nav { background: var(--green-dark); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
     .logo { font-size: 1.5rem; font-weight: 700; color: var(--cream); letter-spacing: 2px; text-transform: uppercase; }
     .logo span { color: var(--gold); }
+    .nav-logo-img { height: 45px; filter: drop-shadow(0 0 6px rgba(201,168,76,0.4)); transition: filter 0.3s, transform 0.3s; }
+    .nav-logo-img:hover { filter: drop-shadow(0 0 12px rgba(201,168,76,0.7)); transform: scale(1.05); }
+    .nav-brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+    .nav-brand .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-brand .brand-name { font-size: 1.4rem; font-weight: 800; color: var(--cream); letter-spacing: 3px; text-transform: uppercase; font-style: italic; }
+    .nav-brand .brand-name em { color: var(--gold); font-style: normal; }
+    .nav-brand .brand-sub { font-size: 0.55rem; color: rgba(245,240,232,0.5); letter-spacing: 4px; text-transform: uppercase; }
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav a { color: var(--cream); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
     nav a:hover { color: var(--gold); }
-    .page-hero { background: linear-gradient(rgba(26,46,26,0.8), rgba(26,46,26,0.85)), url('https://images.unsplash.com/photo-1536782376847-5c9d14d97cc0?w=1400&q=80') center/cover no-repeat; color: var(--cream); text-align: center; padding: 6rem 2rem; }
+    .page-hero { background: linear-gradient(rgba(26,46,26,0.8), rgba(26,46,26,0.85)), url('fotos/IMG_20260312_235601515_HDR.jpg') center/cover no-repeat; color: var(--cream); text-align: center; padding: 6rem 2rem; }
     .page-hero h1 { font-size: 3rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
     .page-hero h1 span { color: var(--gold); }
     .page-hero p { color: rgba(245,240,232,0.7); letter-spacing: 2px; text-transform: uppercase; }
@@ -37,10 +44,16 @@
 </head>
 <body>
   <nav>
-    <a href="index.html" style="text-decoration:none;"><div class="logo">Yerba <span>Inc.</span></div></a>
+    <a href="index.html" class="nav-brand">
+      <img src="fotos/IMG-20260312-WA0016.jpg" alt="Yerba Inc." class="nav-logo-img">
+      <div class="brand-text">
+        <span class="brand-name">Yerba <em>Inc.</em></span>
+        <span class="brand-sub">Premium Smoke Shop</span>
+      </div>
+    </a>
     <ul>
       <li><a href="index.html#products">Shop</a></li>
-      <li><a href="historia.html">Historia</a></li>
+      <li><a href="historia.html">Inventario</a></li>
       <li><a href="galeria.html">Galería</a></li>
       <li><a href="promociones.html">Promociones</a></li>
       <li><a href="blog.html">Blog</a></li>
@@ -57,7 +70,7 @@
 
   <div class="blog-posts">
     <div class="blog-card">
-      <img class="blog-img" src="https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=600&q=80" alt="Nueva colección de vidrio">
+      <img class="blog-img" src="fotos/IMG_20260312_235623030_HDR.jpg" alt="Nueva colección de vidrio">
       <div class="blog-body">
         <div class="blog-date">Marzo 10, 2026</div>
         <h3>Nueva Colección de Vidrio Artesanal</h3>
@@ -67,7 +80,7 @@
     </div>
 
     <div class="blog-card">
-      <img class="blog-img" src="https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=600&q=80" alt="Guía de vaporizadores">
+      <img class="blog-img" src="fotos/IMG_20260312_235626649_HDR.jpg" alt="Guía de productos">
       <div class="blog-body">
         <div class="blog-date">Marzo 5, 2026</div>
         <h3>Guía Completa: Cómo Elegir tu Vaporizador</h3>
@@ -77,7 +90,7 @@
     </div>
 
     <div class="blog-card">
-      <img class="blog-img" src="https://images.unsplash.com/photo-1518614368389-5765896fa540?w=600&q=80" alt="CBD beneficios">
+      <img class="blog-img" src="fotos/IMG_20260312_235557154_HDR.jpg" alt="Interior de la tienda">
       <div class="blog-body">
         <div class="blog-date">Febrero 28, 2026</div>
         <h3>Todo lo que Necesitas Saber sobre CBD</h3>
@@ -87,7 +100,7 @@
     </div>
 
     <div class="blog-card">
-      <img class="blog-img" src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=600&q=80" alt="Limpieza de piezas">
+      <img class="blog-img" src="fotos/IMG_20260312_235632563_HDR.jpg" alt="Frozen drinks">
       <div class="blog-body">
         <div class="blog-date">Febrero 20, 2026</div>
         <h3>5 Tips para Mantener tu Equipo como Nuevo</h3>
