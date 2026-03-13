@@ -88,16 +88,20 @@
 
   <script>
     var DEFAULT_PRODUCTS = [
-      { id: 1, name: 'Premium Glass', category: 'Glass', price: 45, stock: 25, image: 'https://images.unsplash.com/photo-1563865436874-9aef32095fad?w=400&q=80' },
-      { id: 2, name: 'Rolling Essentials', category: 'Rolling', price: 5, stock: 100, image: 'https://images.unsplash.com/photo-1527015175922-36a306cf0e20?w=400&q=80' },
-      { id: 3, name: 'Vaporizers', category: 'Vaporizers', price: 80, stock: 15, image: 'https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=400&q=80' },
-      { id: 4, name: 'Cleaning Supplies', category: 'Cleaning', price: 10, stock: 60, image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80' },
-      { id: 5, name: 'Accessories', category: 'Accessories', price: 15, stock: 80, image: 'https://images.unsplash.com/photo-1545128485-c400e7702796?w=400&q=80' },
-      { id: 6, name: 'Incense & Aroma', category: 'Incense', price: 8, stock: 90, image: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&q=80' },
-      { id: 7, name: 'Lighters & Torches', category: 'Lighters', price: 12, stock: 70, image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&q=80' },
-      { id: 8, name: 'CBD Products', category: 'CBD', price: 20, stock: 40, image: 'https://images.unsplash.com/photo-1518614368389-5765896fa540?w=400&q=80' },
-      { id: 9, name: 'Hookahs', category: 'Hookahs', price: 55, stock: 10, image: 'https://images.unsplash.com/photo-1542525187-792a51b67bb7?w=400&q=80' },
-      { id: 10, name: 'Storage & Cases', category: 'Storage', price: 18, stock: 45, image: 'https://images.unsplash.com/photo-1567922045116-2a00fae2ed03?w=400&q=80' }
+      { id: 1, name: 'Pipa Clásica', category: 'Pipas', price: 25, stock: 30, image: 'fotos/IMG_20260312_235554554_HDR.jpg' },
+      { id: 2, name: 'Pipa de Madera', category: 'Pipas', price: 35, stock: 20, image: 'fotos/IMG_20260312_235554554_HDR.jpg' },
+      { id: 3, name: 'Bong de Vidrio', category: 'Bongs', price: 60, stock: 15, image: 'fotos/IMG_20260312_235557154_HDR.jpg' },
+      { id: 4, name: 'Bong Acrílico', category: 'Bongs', price: 40, stock: 20, image: 'fotos/IMG_20260312_235557154_HDR.jpg' },
+      { id: 5, name: 'Cuero King Size', category: 'Cueros', price: 3, stock: 200, image: 'fotos/IMG_20260312_235601515_HDR.jpg' },
+      { id: 6, name: 'Cuero 1 1/4', category: 'Cueros', price: 2, stock: 250, image: 'fotos/IMG_20260312_235601515_HDR.jpg' },
+      { id: 7, name: 'Grinder Metálico', category: 'Grinders', price: 20, stock: 40, image: 'fotos/IMG_20260312_235607237_HDR.jpg' },
+      { id: 8, name: 'Grinder Acrílico', category: 'Grinders', price: 10, stock: 60, image: 'fotos/IMG_20260312_235607237_HDR.jpg' },
+      { id: 9, name: 'Blон Clásico', category: 'Blons', price: 15, stock: 50, image: 'fotos/IMG_20260312_235623030_HDR.jpg' },
+      { id: 10, name: 'Blon Premium', category: 'Blons', price: 25, stock: 30, image: 'fotos/IMG_20260312_235623030_HDR.jpg' },
+      { id: 11, name: 'Soplete Recargable', category: 'Sopletes', price: 18, stock: 35, image: 'fotos/IMG_20260312_235626649_HDR.jpg' },
+      { id: 12, name: 'Soplete de Mesa', category: 'Sopletes', price: 30, stock: 20, image: 'fotos/IMG_20260312_235626649_HDR.jpg' },
+      { id: 13, name: 'Bandeja Metálica', category: 'Bandejas', price: 15, stock: 40, image: 'fotos/IMG_20260312_235632563_HDR.jpg' },
+      { id: 14, name: 'Bandeja de Madera', category: 'Bandejas', price: 22, stock: 25, image: 'fotos/IMG_20260312_235632563_HDR.jpg' }
     ];
 
     function getProducts() {
@@ -116,6 +120,13 @@
     }
 
     var currentFilter = 'Todos';
+
+    // Read category from URL parameter (e.g. ?cat=Glass)
+    var urlParams = new URLSearchParams(window.location.search);
+    var catParam = urlParams.get('cat');
+    if (catParam) {
+      currentFilter = catParam;
+    }
 
     function render() {
       var products = getProducts();
